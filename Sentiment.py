@@ -69,7 +69,6 @@ files=os.listdir(path)
 for f in files:
       #These variables track the level of positive/negative words in the review. Eg: Highly positive = highP , Low positive = lowP etc
       highP=lowP=highN=lowN=0
-      inf=1
 
       #Flag to indicate that the word is a negative qualifier eg: not, don't, won't etc
       Nflag=0
@@ -103,10 +102,10 @@ for f in files:
       	    Tip = re.sub("[\.\,\!0-9]*", "",i["text"])            
             
             #Words in tip  
-		Words = Tip.split()
+	    Words = Tip.split()
 
             #Loop through the words and calculate sentiment of each word
-		for j in Words:
+	    for j in Words:
                   #Exclamation mark is present in the word - Must mean some sort of excitement. Could be negative/positive.
       		  if j.endswith('!'):
            		exc = 1 
