@@ -38,23 +38,23 @@ def checkWordNet(type)
 		inFile = open('/home/Sentiment/'+type+'.txt')
 		for line in inFile:
 			for word in line.split():
-                  	if word == "Sense":
-                        	wnflag=1
-                        	continue 
-                        if wnflag != 1:
-                        	continue
+                  		if word == "Sense":
+                        		wnflag=1
+                        		continue 
+                           	if wnflag != 1:
+                        		continue
                         TypeList.append(word)
                  	wnflag=0
 			for w in TypeList:
 				t=re.sub("[\,\>\=\'0-9 ]*", "",w)
 				#Find if this synonym is available on DAL	
 				if t != "" or t != "Sense":
-                        	try: 
-                        		r = getMeasure()
-                                	valence = r[0]
-                                    	activation = r[1]
-                             	except:
-                                	continue 
+                        	 	try: 
+                        			r = getMeasure()
+                                		valence = r[0]
+                                    		activation = r[1]
+                             	 	except:
+                                		continue 
                         if valence != "":
                         	break  
 			del TypeList[0:len(TypeList)]
@@ -114,7 +114,7 @@ for f in files:
         	  if j in Emo: 
              		position = Emo.index(j)
              		if position < 38:
-                			lowP+=1    
+                		lowP+=1    
              		elif position < 68:
                   		highP+=1 
              		elif position < 91:
@@ -193,15 +193,15 @@ for f in files:
                   #Sum up scores based on all the flags raised and valence, activation values
 		  if valence <= 1.5:
              		if Nflag == 1:
-			      	if activation < 2.0:               
-			            	lowP+=1
-		                  	if sflag == 1: 
+				if activation < 2.0:               
+			        	lowP+=1
+		                	if sflag == 1: 
                      				lowP+=0.5
-		                  	if exc == 1:
+		                	if exc == 1:
                      				lowP+=0.5
-		                  	if caps == 1:
+		                	if caps == 1:
                      				lowP+=0.25  
-                 			else: 
+                 		else: 
                     			highP+=1
                     			if sflag == 1: 
                        				highP+=0.5 
@@ -209,7 +209,7 @@ for f in files:
                        				highP+=0.5
                     			if caps == 1:
                        				highP+=0.25
-                 			      Nflag = 0       
+                 	Nflag = 0       
              		if activation < 2.0:                
                     		highN+=1 
                     		if sflag == 1 or exc == 1:
@@ -219,10 +219,10 @@ for f in files:
              		else: 
                     		lowN+=1
                     		if sflag == 1 or exc == 1:
-				            lowN+=0.5
+				        lowN+=0.5
                     		if caps == 1:
                        			lowN+=0.25                                                                                      
-        		elif valence >= 2.25:
+        	  elif valence >= 2.25:
                		if Nflag == 1:
                   		if activation < 2.0:                
                     			highN+=1
@@ -236,7 +236,7 @@ for f in files:
                        				lowN+=0.5
                     			if caps == 1:
                        				lowN+=0.25
-                  		Nflag = 0
+                  	Nflag = 0
                		if activation < 2.0:
                     		lowP+=1
                     		if sflag == 1:
